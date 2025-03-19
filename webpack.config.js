@@ -6,23 +6,28 @@ module.exports = (env, options) => {
     const rules = [
         {
             test: /\.m?js(x)?$/, // Handle both .js and .jsx files
-            exclude: /node_modules/, // Exclude node_modules to avoid transpiling dependencies
+            exclude: /node_modules/,
             use: [
                 "html-tag-js/jsx/tag-loader.js",
                 {
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"] // Ensure React preset is used
+                        presets: ["@babel/preset-env", "@babel/preset-react"]
                     }
                 }
             ]
+        },
+        {
+            test: /\.ts(x)?$/, // Handle both .ts and .tsx files
+            exclude: /node_modules/,
+            use: "ts-loader" // Use ts-loader for TypeScript files
         }
     ];
 
     const main = {
         mode,
         entry: {
-            main: "./src/main.js"
+            main: "./src/main.tsx" // Update your entry point if needed
         },
         output: {
             path: path.resolve(__dirname, "dist"),
@@ -33,7 +38,7 @@ module.exports = (env, options) => {
             rules
         },
         resolve: {
-            extensions: [".js", ".jsx"] // Allow importing without specifying the file extension
+            extensions: [".js", ".jsx", ".ts", ".tsx"] // Allow importing without specifying the extension
         },
         plugins: [
             {

@@ -1,13 +1,18 @@
 {
-	"compilerOptions": {
-		"target": "es2016",
-		"module": "commonjs",
-		"allowJs": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"skipLibCheck": true,
-		"outDir": "dist"
-	},
-	"exclude": ["./dist/**/*", "./postcss.config.js"]
+  "compilerOptions": {
+    "target": "es2016", // Keep your existing ES target
+    "module": "commonjs", // Keep your existing module system
+    "allowJs": true, // Allow JS files if you're mixing JS and TS
+    "esModuleInterop": true, // Enable interop between CommonJS and ES modules
+    "forceConsistentCasingInFileNames": true, // Ensure consistent file names
+    "strict": true, // Enable strict mode for type-checking
+    "skipLibCheck": true, // Skip type checking of all declaration files
+    "outDir": "dist", // Keep the output directory
+    "jsx": "react-jsx", // Add this to enable React JSX syntax (for TSX)
+    "moduleResolution": "node", // This ensures TypeScript can resolve modules from node_modules
+    "resolveJsonModule": true, // Allows importing JSON files (useful for plugin.json)
+    "allowSyntheticDefaultImports": true // Ensures React default imports work correctly
+  },
+  "include": ["src/**/*"], // Ensure you're including all TS/TSX files
+  "exclude": ["./dist/**/*", "./postcss.config.js"] // Keep your existing exclusions
 }

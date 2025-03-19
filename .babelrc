@@ -1,7 +1,8 @@
 {
   "presets": [
     "@babel/preset-env",
-    "@babel/preset-react"
+    "@babel/preset-react",
+    "@babel/preset-typescript"
   ],
   "env": {
     "test": {
@@ -11,6 +12,8 @@
     }
   },
   "plugins": [
+    "html-tag-js/jsx/jsx-to-tag.js",
+    "html-tag-js/jsx/syntax-parser.js",
     [
       "@babel/plugin-transform-runtime"
     ]

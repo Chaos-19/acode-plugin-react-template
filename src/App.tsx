@@ -1,0 +1,63 @@
+import React, { useState, useRef } from "react";
+import { JSONGraph as Graph } from "jsongraph-react";
+
+const App = ({ cacheFile, cacheFileUrl }) => {
+    const [count, setCount] = useState<number>(0);
+    const graphRef:any = useRef();
+
+    const json:any = JSON.stringify({
+  "name": "acode-plugin",
+  "version": "1.0.2",
+  "description": "Template for Acode plugin",
+  "main": "dist/main.js",
+  "repository": "https://github.com/deadlyjack/acode-plugin.git",
+  "author": "Ajit <me@ajitkumar.dev>",
+  "license": "MIT",
+  "dependencies": {
+    "html-tag-js": "^1.1.41",
+    "jsongraph-react": "^0.0.12",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "babel-loader": "^9.1.3",
+    "jszip": "^3.10.1",
+    "live-server": "^1.2.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.4",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "build": "webpack",
+    "build-release": "webpack --mode production",
+    "start-dev": "node .vscode/start-dev"
+  },
+  "browserslist": "cover 100%,not android < 5"
+}
+);
+
+    return (
+    <div
+            style={{
+                width: "99%",
+                height: "94dvh"
+            }}
+        >
+            <Graph
+                json={json}
+                ref={graphRef}
+                style={{
+                    width: "100%",
+                    height: "100%"
+                }}
+            />
+        </div>
+    );
+};
